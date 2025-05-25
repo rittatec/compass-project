@@ -41,8 +41,17 @@ export default function Login({ navigation }) {
 
       {/* Link de cadastro */}
       <Text style={styles.registerText}>
+        Não possui uma conta?{' '}
+      <Text
+       style={styles.registerLink}
+       onPress={() => navigation.navigate('Cadastrar')}
+      >
+      Cadastre-se
+    </Text>
+  </Text>
+      {/* <Text style={styles.registerText}>
         Não possui uma conta? <Text style={styles.registerLink}>Cadastre-se</Text>
-      </Text>
+      </Text> */}
     </View>
   );
 }
