@@ -7,74 +7,89 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 export default function Cadastrar({ navigation }) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
+  const [senhaVisivel, setSenhaVisivel] = useState(false);
+  const [confirmarSenhaVisivel, setConfirmarSenhaVisivel] = useState(false);
 
   return (
     <View style={styles.container}>
-      {/* Topo */}
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Cadastro</Text>
-      </View>
+      {/* Logo */}
+      <Image
+        source={require('../../assets/logo.png')}
+        style={styles.logoImage}
+      />
+
+      {/* Título */}
+      <Text style={styles.title}>Cadastre-se</Text>
+      <Text style={styles.subTitle}>
+        Venha fazer seu próprio controle financeiro
+      </Text>
 
       {/* Formulário */}
-      <View style={styles.formBox}>
-        <Text style={styles.logo}>COMPASS</Text>
-
-        {/* Logo */}
-        <Image
-          source={require('../../assets/logo.png')} // 
-          style={styles.logoImage}
-        />
-
+      <View style={styles.inputContainer}>
         <TextInput
-          placeholder="Nome de Usuário"
-          placeholderTextColor="#000"
+          placeholder="User"
+          placeholderTextColor="#999"
           style={styles.input}
           value={username}
           onChangeText={setUsername}
         />
         <TextInput
-          placeholder="E-mail"
-          placeholderTextColor="#000"
+          placeholder="Email"
+          placeholderTextColor="#999"
           style={styles.input}
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
         />
-        <TextInput
-          placeholder="Senha"
-          placeholderTextColor="#000"
-          secureTextEntry
-          style={styles.input}
-          value={senha}
-          onChangeText={setSenha}
-        />
-        <TextInput
-          placeholder="Confirmar Senha"
-          placeholderTextColor="#000"
-          secureTextEntry
-          style={styles.input}
-          value={confirmarSenha}
-          onChangeText={setConfirmarSenha}
-        />
 
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('PopOut')}>
-          <Text style={styles.buttonText}>Cadastrar</Text>
+        <View style={styles.passwordContainer}>
+          <TextInput
+            placeholder="Senha"
+            placeholderTextColor="#999"
+            secureTextEntry={!senhaVisivel}
+            style={styles.inputPassword}
+            value={senha}
+            onChangeText={setSenha}
+          />
+          <Feather
+            name={senhaVisivel ? 'eye' : 'eye-off'}
+            size={20}
+            color="#999"
+            onPress={() => setSenhaVisivel(!senhaVisivel)}
+          />
+        </View>
+
+        <View style={styles.passwordContainer}>
+          <TextInput
+            placeholder="Confirmar Senha"
+            placeholderTextColor="#999"
+            secureTextEntry={!confirmarSenhaVisivel}
+            style={styles.inputPassword}
+            value={confirmarSenha}
+            onChangeText={setConfirmarSenha}
+          />
+          <Feather
+            name={confirmarSenhaVisivel ? 'eye' : 'eye-off'}
+            size={20}
+            color="#999"
+            onPress={() => setConfirmarSenhaVisivel(!confirmarSenhaVisivel)}
+          />
+        </View>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('PopOut')}
+        >
+          <Text style={styles.buttonText}>Registre-se</Text>
         </TouchableOpacity>
       </View>
-
-      {/* Link Login */}
-      <Text style={styles.loginText}>
-        Já possui uma conta?{' '}
-        <Text style={styles.loginLink} onPress={() => navigation.navigate('Login')}>
-          Login
-        </Text>
-      </Text>
     </View>
   );
 }
@@ -82,66 +97,63 @@ export default function Cadastrar({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2b2d42',
-  },
-  header: {
-    backgroundColor: '#4951a1',
-    paddingVertical: 40,
+    backgroundColor: '#f9f9f9',
     alignItems: 'center',
-    borderBottomLeftRadius: 50,
-    borderBottomRightRadius: 50,
-  },
-  headerText: {
-    fontSize: 28,
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  formBox: {
-    backgroundColor: '#3f4a83',
-    margin: 30,
-    padding: 25,
-    borderRadius: 20,
-    alignItems: 'center',
-  },
-  logo: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#000',
-    marginBottom: 10,
-    letterSpacing: 2,
+    justifyContent: 'center',
+    paddingHorizontal: 20,
   },
   logoImage: {
-    width: 60,
-    height: 60,
+    width: 100,
+    height: 100,
     marginBottom: 20,
     resizeMode: 'contain',
   },
-  input: {
-    backgroundColor: '#d9d9d9',
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  subTitle: {
+    fontSize: 14,
+    color: '#333',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  inputContainer: {
     width: '100%',
+  },
+  input: {
+    backgroundColor: '#fff',
+    borderColor: '#ccc',
+    borderWidth: 1,
     padding: 12,
-    borderRadius: 30,
-    marginVertical: 6,
+    borderRadius: 15,
+    marginBottom: 10,
+  },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingHorizontal: 12,
+    marginBottom: 10,
+  },
+  inputPassword: {
+    flex: 1,
+    paddingVertical: 12,
   },
   button: {
-    backgroundColor: '#7b8cf7',
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    borderRadius: 30,
-    marginTop: 15,
+    backgroundColor: '#3B55A1',
+    paddingVertical: 15,
+    borderRadius: 20,
+    alignItems: 'center',
+    marginTop: 10,
   },
   buttonText: {
-    color: '#000',
+    color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
-  },
-  loginText: {
-    color: '#ccc',
-    textAlign: 'center',
-    marginTop: 20,
-  },
-  loginLink: {
-    color: '#a3b5ff',
-    textDecorationLine: 'underline',
   },
 });

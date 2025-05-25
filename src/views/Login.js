@@ -1,57 +1,39 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image,StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 export default function Login({ navigation }) {
   return (
     <View style={styles.container}>
-      {/* Cabeçalho  */}
-      <View style={styles.header}>
-        <Text style={styles.loginTitle}>Login</Text>
-      </View>
+      {/* Logo */}
+      <Image
+        source={require('../../assets/logo.png')} // Substitua pela sua imagem
+        style={styles.logoImage}
+      />
 
-      {/* Card de login */}
-      <View style={styles.card}>
-        <Text style={styles.logoText}>COMPASS</Text>
+      {/* Título */}
+      <Text style={styles.loginTitle}>Login</Text>
+      <Text style={styles.subTitle}>Bem vindo(a) de volta!</Text>
 
-        {/* Logo */}
-               <Image
-                 source={require('../../assets/logo.png')} // 
-                 style={styles.logoImage}
-               />
+      {/* Campos de entrada */}
+      <TextInput
+        placeholder="User"
+        style={styles.input}
+        placeholderTextColor="#999"
+      />
+      <TextInput
+        placeholder="Senha"
+        style={styles.input}
+        secureTextEntry
+        placeholderTextColor="#999"
+      />
 
-        <TextInput
-          placeholder="E-mail"
-          style={styles.input}
-          placeholderTextColor="#000"
-        />
-        <TextInput
-          placeholder="Senha"
-          style={styles.input}
-          secureTextEntry
-          placeholderTextColor="#000"
-        />
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Menu')}
-        >
-          <Text style={styles.buttonText}>Entrar</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Link de cadastro */}
-      <Text style={styles.registerText}>
-        Não possui uma conta?{' '}
-      <Text
-       style={styles.registerLink}
-       onPress={() => navigation.navigate('Cadastrar')}
+      {/* Botão */}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Menu')}
       >
-      Cadastre-se
-    </Text>
-  </Text>
-      {/* <Text style={styles.registerText}>
-        Não possui uma conta? <Text style={styles.registerLink}>Cadastre-se</Text>
-      </Text> */}
+        <Text style={styles.buttonText}>Entrar</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -59,76 +41,50 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2E354F',
+    backgroundColor: '#F9F9F9',
     alignItems: 'center',
-  },
-  header: {
-    backgroundColor: '#4054B2',
-    width: '100%',
-    paddingVertical: 40,
-    borderBottomLeftRadius: 60,
-    borderBottomRightRadius: 60,
-    alignItems: 'center',
-  },
-  loginTitle: {
-    fontSize: 30,
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  card: {
-    backgroundColor: '#3C4C8D',
-    width: '85%',
-    borderRadius: 10,
-    alignItems: 'center',
-    paddingVertical: 30,
+    justifyContent: 'center',
     paddingHorizontal: 20,
-    marginTop: 30,
-  },
-  logoText: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#000',
-    marginBottom: 10,
-  },
-  logo: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#000',
-    marginBottom: 10,
-    letterSpacing: 2,
   },
   logoImage: {
-    width: 60,
-    height: 60,
-    marginBottom: 20,
+    width: 100,
+    height: 100,
+    marginBottom: 30,
     resizeMode: 'contain',
   },
+  loginTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  subTitle: {
+    fontSize: 16,
+    color: '#555',
+    marginBottom: 30,
+    marginTop: 5,
+  },
   input: {
-    backgroundColor: '#D9D9D9',
+    backgroundColor: '#F0F0F0',
     width: '100%',
     borderRadius: 20,
-    paddingVertical: 10,
+    paddingVertical: 12,
     paddingHorizontal: 15,
-    marginVertical: 10,
+    marginBottom: 15,
     fontSize: 16,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
   },
   button: {
-    backgroundColor: '#8EA6F4',
-    paddingVertical: 10,
-    paddingHorizontal: 40,
-    borderRadius: 20,
-    marginTop: 20,
+    backgroundColor: '#3B55A1',
+    paddingVertical: 15,
+    width: '100%',
+    borderRadius: 15,
+    alignItems: 'center',
+    marginTop: 10,
   },
   buttonText: {
     fontSize: 18,
-    color: '#000',
-  },
-  registerText: {
-    color: '#fff',
-    marginTop: 20,
-  },
-  registerLink: {
-    color: '#8EA6F4',
-    textDecorationLine: 'underline',
+    color: '#FFF',
+    fontWeight: 'bold',
   },
 });
