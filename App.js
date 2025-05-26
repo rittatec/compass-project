@@ -9,6 +9,7 @@ import Cadastrar from './src/views/Cadastrar'; // tela de cadastro
 import Menu from './src/views/Menu'; // tela de Menu
 import PopOut from './src/views/PopOut'; // tela PopOut de registro com sucesso
 
+
 const Stack = createNativeStackNavigator();
 
 // Funcao para ir adicionando as telas e config das rotas
