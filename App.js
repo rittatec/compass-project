@@ -8,6 +8,7 @@ import Login from './src/views/Login'; // tela Login
 import Cadastrar from './src/views/Cadastrar'; // tela de cadastro
 import Menu from './src/views/Menu'; // tela de Menu
 import PopOut from './src/views/PopOut'; // tela PopOut de registro com sucesso
+import Agua from './src/views/AguaView'; // tela para add o valor reservado para a agua - nome = agua - nome da tela = CategoriaView
 
 
 const Stack = createNativeStackNavigator();
@@ -22,6 +23,8 @@ export default function App() {
         <Stack.Screen name= 'Cadastrar' component={Cadastrar}/>
         <Stack.Screen name= 'Menu' component={Menu}/>
         <Stack.Screen name='PopOut' component={PopOut}/>
+        <Stack.Screen name='Agua' component={Agua}/>
+       
       </Stack.Navigator>
     </NavigationContainer>
   );
