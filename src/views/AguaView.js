@@ -16,9 +16,6 @@ export default function CustomPaymentScreen() {
         <Text style={styles.subtitle}>Renda Mensal</Text>
         <View style={styles.incomeBox}>
           <Text style={styles.income}>R$ 0,00</Text>
-          <TouchableOpacity style={styles.editButton}>
-            <Text style={styles.editText}>Alterar</Text>
-          </TouchableOpacity>
         </View>
       </View>
 
@@ -46,7 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   title: {
-    fontSize: 22,
+    fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 20,
   },
@@ -58,7 +55,8 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     color: '#fff',
-    fontSize: 14,
+    fontSize: 20,
+    fontWeight: 'bold',
     marginBottom: 5,
   },
   incomeBox: {
@@ -71,16 +69,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
   },
-  editButton: {
-    backgroundColor: '#fff',
-    paddingVertical: 6,
-    paddingHorizontal: 15,
-    borderRadius: 15,
-  },
-  editText: {
-    color: '#3A53A4',
-    fontWeight: 'bold',
-  },
   paymentBox: {
     backgroundColor: '#F7F7F7',
     borderRadius: 20,
@@ -91,14 +79,15 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   paymentTitle: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 20,
   },
   paymentLabel: {
     textAlign: 'center',
-    marginBottom: 5,
+    fontSize: 20,
+    marginBottom: 15,
   },
   input: {
     borderBottomWidth: 2,
@@ -107,7 +96,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#4CAF50',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 40,
   },
   saveButton: {
     backgroundColor: '#4CAF50',
@@ -118,6 +107,6 @@ const styles = StyleSheet.create({
   saveText: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 20,
   },
 });

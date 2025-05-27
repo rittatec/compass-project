@@ -9,7 +9,9 @@ import Cadastrar from './src/views/Cadastrar'; // tela de cadastro
 import Menu from './src/views/Menu'; // tela de Menu
 import PopOut from './src/views/PopOut'; // tela PopOut de registro com sucesso
 import Agua from './src/views/AguaView'; // tela para add o valor reservado para a agua - nome = agua - nome da tela = CategoriaView
-
+import EnergiaView from './src/views/EnergiaView';
+import Alimento from './src/views/AlimentoView'; // tela para add o valor reservado para o alimento - nome = alimento - nome da tela = CategoriaView
+import Wifi from './src/views/WifiView'; // tela para add o valor reservado para o wifi - nome = wifi - nome da tela = CategoriaView
 
 const Stack = createNativeStackNavigator();
 
@@ -24,7 +26,9 @@ export default function App() {
         <Stack.Screen name= 'Menu' component={Menu}/>
         <Stack.Screen name='PopOut' component={PopOut}/>
         <Stack.Screen name='Agua' component={Agua}/>
-       
+        <Stack.Screen name='Energia' component={EnergiaView}/> 
+        <Stack.Screen name='Alimento' component={Alimento}/>
+        <Stack.Screen name='Wifi' component={Wifi}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

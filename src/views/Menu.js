@@ -25,7 +25,7 @@ export default function Menu() {
       <TouchableOpacity
         key={screen}
         style={[styles.card, { backgroundColor: color }]}
-        onPress={() => navigation.navigate('Agua')}
+        onPress={() => navigation.navigate(screen)}
       >
         <MaterialIcons name={icon} size={28} color="#fff" />
         <Text style={styles.cardText}>{title}</Text>
