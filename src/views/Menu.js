@@ -59,13 +59,24 @@ export default function Menu() {
         <View style={styles.grid}>{renderButtons(categorias)}</View>
       </ScrollView>
 
-      <View style={styles.footer}>
-        <Ionicons name="home" size={24} color="#007AFF" />
-        <Ionicons name="stats-chart" size={24} color="#ccc" />
-        <Ionicons name="add-circle" size={24} color="#ccc" />
-        <Ionicons name="chatbubble-ellipses-outline" size={24} color="#ccc" />
-        <Ionicons name="person-outline" size={24} color="#ccc" />
-      </View>
+        <View style={styles.footer}>
+          <TouchableOpacity style={styles.footerItem} onPress={() => navigation.navigate('Menu')}>
+            <Ionicons name="home" size={36} color="#5A97A7" />
+            <Text style={[styles.footerLabel, { color: '#5A97A7' }]}>Menu</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.footerItem} onPress={() => navigation.navigate('Perfil')}>
+            <Ionicons name="person-outline" size={32} color="#B0B8BE" />
+            <Text style={styles.footerLabel}>Perfil</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.footerItem} onPress={() => navigation.navigate('Orcamento')}>
+            <Ionicons name="stats-chart-outline" size={32} color="#B0B8BE" />
+            <Text style={styles.footerLabel}>Orçamento</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.footerItem} onPress={() => navigation.navigate('Notificacoes')}>
+            <Ionicons name="notifications-outline" size={32} color="#B0B8BE" />
+            <Text style={styles.footerLabel}>Notificações</Text>
+          </TouchableOpacity>
+        </View>
     </SafeAreaView>
   );
 }
@@ -145,7 +156,7 @@ const styles = StyleSheet.create({
   footer: {
     position: 'absolute',
     bottom: 0,
-    height: 60,
+    height: 80,
     backgroundColor: '#fff',
     width: '100%',
     borderTopWidth: 1,
@@ -153,5 +164,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+    paddingBottom: 10,
   },
+  footerItem: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  footerLabel: {
+    fontSize: 16,
+    color: '#B0B8BE',
+    marginTop: 2,
+    fontWeight: '600',
+  },
+
 });
