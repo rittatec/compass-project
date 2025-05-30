@@ -6,7 +6,7 @@ export default function Menu() {
   const navigation = useNavigation();
 
   const pagamentos = [
-    { title: 'Água', screen: 'Agua', color: '#49B2FF', icon: 'water' },
+    { title: 'Água', screen: 'Agua', color: '#49B2FF', icon: 'water'},
     { title: 'Energia', screen: 'Energia', color: '#1DB954', icon: 'flash-on' },
     { title: 'Wi–Fi', screen: 'Wifi', color: '#B497FF', icon: 'wifi' },
     { title: 'Alimento', screen: 'Alimento', color: '#FF7F7F', icon: 'fastfood' },

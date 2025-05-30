@@ -20,6 +20,12 @@ import Saude from './src/views/SaudeView'; // tela para add o valor reservado pa
 import Perfil from './src/views/PerfilView'; // tela de perfil do usuario
 import Notificacoes from './src/views/NotificacoesView'; // tela de notificações
 import Orcamento from './src/views/OrcamentoView'; // tela de orcamento do usuario
+import AtualizarPerfil from './src/views/AtualizarPerfil'; // tela para atualizar o perfil do usuario
+import Sair from './src/views/Sair'; // tela para sair do app
+import EditarNome from './src/views/EditarNome'; // tela para editar o nome do usuario
+import EditarDataNascimento from './src/views/EditarDataNascimento'; // tela para editar a data de nascimento do usuario
+import EditarEmail from './src/views/EditarEmail'; // tela para editar o email do usuario
+import AdicionarTelefone from './src/views/AdicionarTelefone';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +36,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Inicio">
         <Stack.Screen name="Inicio" component={Inicio} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name= 'Cadastrar' component={Cadastrar}/>
+        <Stack.Screen name='Cadastrar' component={Cadastrar}/>
         <Stack.Screen name= 'Menu' component={Menu}/>
         <Stack.Screen name='PopOut' component={PopOut}/>
         <Stack.Screen name='Agua' component={Agua}/>
@@ -45,6 +51,13 @@ export default function App() {
         <Stack.Screen name='Perfil' component={Perfil}/>
         <Stack.Screen name='Notificacoes' component={Notificacoes}/>
         <Stack.Screen name='Orcamento' component={Orcamento}/>
+        <Stack.Screen name='AtualizarPerfil' component={AtualizarPerfil}/>
+        <Stack.Screen name='Sair' component={Sair}/>
+        <Stack.Screen name='EditarNome' component={EditarNome}/>
+        <Stack.Screen name='EditarDataNascimento' component={EditarDataNascimento}/>
+        <Stack.Screen name='EditarEmail' component={EditarEmail}/>
+        <Stack.Screen name='AdicionarTelefone' component={AdicionarTelefone}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );
