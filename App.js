@@ -26,6 +26,7 @@ import EditarNome from './src/views/EditarNome'; // tela para editar o nome do u
 import EditarDataNascimento from './src/views/EditarDataNascimento'; // tela para editar a data de nascimento do usuario
 import EditarEmail from './src/views/EditarEmail'; // tela para editar o email do usuario
 import AdicionarTelefone from './src/views/AdicionarTelefone';
+import AtualizarRenda from './src/views/AtualizarRenda';
 
 const Stack = createNativeStackNavigator();
 
@@ -57,7 +58,7 @@ export default function App() {
         <Stack.Screen name='EditarDataNascimento' component={EditarDataNascimento}/>
         <Stack.Screen name='EditarEmail' component={EditarEmail}/>
         <Stack.Screen name='AdicionarTelefone' component={AdicionarTelefone}/>
-
+        <Stack.Screen name='AtualizarRenda' component={AtualizarRenda}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

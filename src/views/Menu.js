@@ -42,7 +42,9 @@ export default function Menu() {
             <Text style={styles.balanceLabel}>Renda Mensal</Text>
             <Text style={styles.balanceValue}>R$ 0,00</Text>
           </View>
-          <TouchableOpacity style={styles.editButton}>
+          <TouchableOpacity 
+          onPress={() => navigation.navigate('AtualizarRenda')}
+          style={styles.editButton}>
             <Text style={styles.editButtonText}>Alterar</Text>
           </TouchableOpacity>
         </View>
