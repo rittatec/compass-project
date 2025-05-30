@@ -14,12 +14,6 @@ export default function AtualizarPerfil() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Ionicons name="menu" size={24} color="black" />
-        <Ionicons name="notifications-outline" size={24} color="black" />
-      </View>
-
       <Text style={styles.title}>Atualize seu perfil</Text>
 
       {/* icon de perfil */}
@@ -82,11 +76,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fafbfc',
     paddingHorizontal: 24,
     paddingTop: 40,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 18,
   },
   title: {
     fontSize: 26,

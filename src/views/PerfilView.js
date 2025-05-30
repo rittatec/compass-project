@@ -7,12 +7,6 @@ export default function PerfilView() {
 
   return (
     <View style={styles.container}>
-      {/* Header com ícones de menu e notificações */}
-      <View style={styles.header}>
-        <Ionicons name="menu" size={24} color="black" />
-        <Ionicons name="notifications-outline" size={24} color="black" />
-      </View>
-
       <Text style={styles.title}>Perfil</Text>
 
       {/* Foto de perfil */}
@@ -41,7 +35,7 @@ export default function PerfilView() {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.optionItem}
-          onPress={() => navigation.navigate('Login')}
+          onPress={() => navigation.navigate('Sair')}
         >
           <MaterialIcons name="logout" size={24} color="#5A97A7" />
           <Text style={styles.optionText}>Sair</Text>
@@ -58,11 +52,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fafbfc',
     paddingHorizontal: 24,
     paddingTop: 40,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 18,
   },
   title: {
     fontSize: 28,

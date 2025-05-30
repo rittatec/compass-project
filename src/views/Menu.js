@@ -35,11 +35,6 @@ export default function Menu() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.headerRow}>
-          <Ionicons name="menu" size={24} color="black" />
-          <Ionicons name="notifications-outline" size={24} color="black" />
-        </View>
-
         <Text style={styles.greeting}>Bem vindo(a), Cliente.</Text>
 
         <View style={styles.balanceCard}>
@@ -89,11 +84,6 @@ const styles = StyleSheet.create({
   scrollContainer: {
     padding: 16,
     paddingBottom: 80,
-  },
-  headerRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 16,
   },
   greeting: {
     fontSize: 22,
