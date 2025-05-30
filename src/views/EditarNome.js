@@ -35,8 +35,7 @@ export default function AdicionarTelefone() {
             style={styles.input}
             placeholder="Digite seu Nome"
             value={novoNome}
-            onChangeText={novoNome}
-            keyboardType="phone-pad"
+            onChangeText={setNovoNome}
           />
           <View style={styles.buttonRow}>
             <TouchableOpacity style={styles.cancelButton} onPress={cancelar}>

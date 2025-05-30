@@ -69,10 +69,6 @@ export default function Menu() {
             <Ionicons name="stats-chart-outline" size={32} color="#B0B8BE" />
             <Text style={styles.footerLabel}>Orçamento</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.footerItem} onPress={() => navigation.navigate('Notificacoes')}>
-            <Ionicons name="notifications-outline" size={32} color="#B0B8BE" />
-            <Text style={styles.footerLabel}>Notificações</Text>
-          </TouchableOpacity>
         </View>
     </SafeAreaView>
   );
