@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react"
 import {
   View,
   Text,
@@ -6,22 +6,25 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-} from 'react-native';
-import { Feather } from '@expo/vector-icons';
+} from "react-native"
+import { Feather } from "@expo/vector-icons"
+
+// Importando função para cadastrar usuários
+import { cadastrarUsuario } from "../services/api"
 
 export default function Cadastrar({ navigation }) {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [confirmarSenha, setConfirmarSenha] = useState('');
-  const [senhaVisivel, setSenhaVisivel] = useState(false);
-  const [confirmarSenhaVisivel, setConfirmarSenhaVisivel] = useState(false);
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [senha, setSenha] = useState("")
+  const [confirmarSenha, setConfirmarSenha] = useState("")
+  const [senhaVisivel, setSenhaVisivel] = useState(false)
+  const [confirmarSenhaVisivel, setConfirmarSenhaVisivel] = useState(false)
 
   return (
     <View style={styles.container}>
       {/* Logo */}
       <Image
-        source={require('../../assets/logo.png')}
+        source={require("../../assets/logo.png")}
         style={styles.logoImage}
       />
 
@@ -37,14 +40,13 @@ export default function Cadastrar({ navigation }) {
           placeholder="User"
           placeholderTextColor="#999"
           style={styles.input}
-          value={username}
+          // value={username}
           onChangeText={setUsername}
         />
         <TextInput
           placeholder="Email"
           placeholderTextColor="#999"
           style={styles.input}
-          value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
         />
@@ -55,11 +57,10 @@ export default function Cadastrar({ navigation }) {
             placeholderTextColor="#999"
             secureTextEntry={!senhaVisivel}
             style={styles.inputPassword}
-            value={senha}
             onChangeText={setSenha}
           />
           <Feather
-            name={senhaVisivel ? 'eye' : 'eye-off'}
+            name={senhaVisivel ? "eye" : "eye-off"}
             size={20}
             color="#999"
             onPress={() => setSenhaVisivel(!senhaVisivel)}
@@ -72,11 +73,10 @@ export default function Cadastrar({ navigation }) {
             placeholderTextColor="#999"
             secureTextEntry={!confirmarSenhaVisivel}
             style={styles.inputPassword}
-            value={confirmarSenha}
             onChangeText={setConfirmarSenha}
           />
           <Feather
-            name={confirmarSenhaVisivel ? 'eye' : 'eye-off'}
+            name={confirmarSenhaVisivel ? "eye" : "eye-off"}
             size={20}
             color="#999"
             onPress={() => setConfirmarSenhaVisivel(!confirmarSenhaVisivel)}
@@ -85,56 +85,63 @@ export default function Cadastrar({ navigation }) {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('PopOut')}
+          onPress={() => {
+            cadastrarUsuario({
+              nome: username,
+              email,
+              senha,
+            })
+            navigation.navigate("PopOut")
+          }}
         >
           <Text style={styles.buttonText}>Registre-se</Text>
         </TouchableOpacity>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f9f9f9',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#f9f9f9",
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 20,
   },
   logoImage: {
     width: 100,
     height: 100,
     marginBottom: 20,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   title: {
     fontSize: 28,
-    fontWeight: 'bold',
-    color: '#000',
+    fontWeight: "bold",
+    color: "#000",
   },
   subTitle: {
     fontSize: 14,
-    color: '#333',
+    color: "#333",
     marginBottom: 20,
-    textAlign: 'center',
+    textAlign: "center",
   },
   inputContainer: {
-    width: '100%',
+    width: "100%",
   },
   input: {
-    backgroundColor: '#fff',
-    borderColor: '#ccc',
+    backgroundColor: "#fff",
+    borderColor: "#ccc",
     borderWidth: 1,
     padding: 12,
     borderRadius: 15,
     marginBottom: 10,
   },
   passwordContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    borderColor: '#ccc',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderColor: "#ccc",
     borderWidth: 1,
     borderRadius: 15,
     paddingHorizontal: 12,
@@ -145,15 +152,15 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   button: {
-    backgroundColor: '#3B55A1',
+    backgroundColor: "#3B55A1",
     paddingVertical: 15,
     borderRadius: 20,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 10,
   },
   buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
     fontSize: 16,
   },
-});
+})
