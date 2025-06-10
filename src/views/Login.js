@@ -8,11 +8,37 @@ import {
   StyleSheet,
   Alert,
 } from "react-native"
-import { verificarUsuario } from "../services/api"
+import { api } from "../services/api"
 
 export default function Login({ navigation }) {
   const [nome, setNome] = useState("")
   const [senha, setSenha] = useState("")
+
+  async function verificarUsuario({ nome, senha }) {
+    try {
+      const response = await api.post("/verificar_usuario", {
+        nome,
+        senha,
+      })
+
+      const responseUsuario = await api.get(
+        `/conta/por_usuario/${response.data}`
+      )
+
+      if (response.status == 200) {
+        setNome(responseUsuario.data.nome)
+        navigation.navigate("Menu", {
+          dados: {
+            usuarioId: response.data,
+            contaNome: responseUsuario.data.nome,
+            contaRenda: responseUsuario.data.renda,
+          },
+        })
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -24,7 +50,7 @@ export default function Login({ navigation }) {
 
       {/* Título */}
       <Text style={styles.loginTitle}>Login</Text>
-      <Text style={styles.subTitle}>Bem vindo(a) de volta!</Text>
+      <Text style={styles.subTitle}>Bem vindo(a) de volta! {nome}</Text>
 
       {/* Campos de entrada */}
       <TextInput

@@ -9,7 +9,7 @@ import {
 } from "react-native"
 import { useState } from "react"
 
-import { salvarRenda } from "../services/api"
+import { api } from "../services/api"
 
 export default function AtualizarRenda() {
   const [renda, setRenda] = useState("")
@@ -20,6 +20,22 @@ export default function AtualizarRenda() {
     const num = parseFloat(valor.replace(/\D/g, "")) / 100
     if (isNaN(num)) return "R$ 0,00"
     return num.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+  }
+
+  async function salvarRenda(idUsuario) {
+    try {
+      const response = await api.get(`/conta/por_usuario/${idUsuario}`)
+
+      const idConta = response.data.id
+      const nome = response.data.nome
+
+      const responseConta = await api.put(`/atualizar_conta/${idConta}`, {
+        nome,
+        renda,
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (

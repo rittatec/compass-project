@@ -23,33 +23,3 @@ export async function cadastrarUsuario({ nome, email, senha }) {
     console.error(error)
   }
 }
-
-export async function verificarUsuario({ nome, senha }, navigation) {
-  try {
-    const response = await api.post("/verificar_usuario", {
-      nome,
-      senha,
-    })
-
-    const responseUsuario = await api.get(`/usuario/${response.data}`)
-
-    if (response.data) {
-      await AsyncStorage.setItem("@asyncStorage:idUsuario", response.data)
-
-      navigation.navigate("Menu")
-    }
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-export async function salvarRenda(idConta, nome, renda) {
-  try {
-    const response = await api.put(`/atualizar_conta/${idConta}`, {
-      nome,
-      renda,
-    })
-  } catch (error) {
-    console.error(error)
-  }
-}

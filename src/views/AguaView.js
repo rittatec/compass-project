@@ -1,23 +1,43 @@
-import { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { useState } from "react"
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from "react-native"
+
+import { api } from "../services/api"
 
 export default function CustomPaymentScreen() {
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState("")
 
   const handleSave = () => {
-    alert(`Valor salvo: R$ ${amount}`);
-  };
+    alert(`Valor salvo: R$ ${amount}`)
+  }
+
+  // async function cadastrarAmount() {
+  //   const response = await api.get
+  //   const responseMovimento = await api.post(`/criar_movimentacao/${idConta}`, {
+  //     movimento: {
+
+  //     },
+  //     categoria: {
+
+  //     }
+  //   })
+  // }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Personalize seus pagamentos</Text>
 
-      <View style={styles.card}>
+      {/* <View style={styles.card}>
         <Text style={styles.subtitle}>Renda Mensal</Text>
         <View style={styles.incomeBox}>
           <Text style={styles.income}>R$ 0,00</Text>
         </View>
-      </View>
+      </View> */}
 
       <View style={styles.paymentBox}>
         <Text style={styles.paymentTitle}>Água</Text>
@@ -34,79 +54,79 @@ export default function CustomPaymentScreen() {
         </TouchableOpacity>
       </View>
     </View>
-  );
+  )
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   title: {
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 20,
   },
   card: {
-    backgroundColor: '#3A53A4',
+    backgroundColor: "#3A53A4",
     borderRadius: 12,
     padding: 20,
     marginBottom: 30,
   },
   subtitle: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 5,
   },
   incomeBox: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   income: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   paymentBox: {
-    backgroundColor: '#F7F7F7',
+    backgroundColor: "#F7F7F7",
     borderRadius: 20,
     padding: 25,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 10,
     elevation: 5,
   },
   paymentTitle: {
     fontSize: 25,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 20,
   },
   paymentLabel: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 20,
     marginBottom: 15,
   },
   input: {
     borderBottomWidth: 2,
-    borderBottomColor: '#4CAF50',
+    borderBottomColor: "#4CAF50",
     fontSize: 22,
-    fontWeight: 'bold',
-    color: '#4CAF50',
-    textAlign: 'center',
+    fontWeight: "bold",
+    color: "#4CAF50",
+    textAlign: "center",
     marginBottom: 40,
   },
   saveButton: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: "#4CAF50",
     paddingVertical: 12,
     borderRadius: 25,
-    alignItems: 'center',
+    alignItems: "center",
   },
   saveText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
     fontSize: 20,
   },
-});
+})

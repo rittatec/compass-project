@@ -15,21 +15,38 @@ import { api } from "../services/api"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useEffect, useState } from "react"
 
-export default function Menu() {
+export default function Menu({ route }) {
+  const { dados } = route.params
   const navigation = useNavigation()
 
   const [contaNome, setContaNome] = useState("")
+  const [contaRenda, setContaRenda] = useState(0)
 
-  const getStorage = async () => {
-    const idUsuario = await AsyncStorage.getItem("@asyncStorage:idUsuario")
+  useEffect(() => {
+    setContaNome(dados.contaNome)
+    setContaRenda(dados.contaRenda)
+  }, [])
 
-    const response = await api.get(`/conta/por_usuario/${idUsuario.data}`)
-    console.log(response.data, "tá rolando")
+  async function pegarDadosDoUsuario() {
+    try {
+      const responseUsuario = await api.get(
+        `/conta/por_usuario/${dados.usuarioId}`
+      )
 
-    setContaNome(response.data.nome)
+      if (responseUsuario.status == 200) {
+        navigation.navigate("Perfil", {
+          dados: {
+            usuarioId: dados.id,
+            contaId: responseUsuario.data.id,
+            contaNome: responseUsuario.data.nome,
+            contaRenda: responseUsuario.data.renda,
+          },
+        })
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
-
-  getStorage()
 
   const pagamentos = [
     { title: "Água", screen: "Agua", color: "#49B2FF", icon: "water" },
@@ -86,7 +103,7 @@ export default function Menu() {
         <View style={styles.balanceCard}>
           <View>
             <Text style={styles.balanceLabel}>Renda Mensal</Text>
-            <Text style={styles.balanceValue}>R$ 0,00</Text>
+            <Text style={styles.balanceValue}>R$ {contaRenda}</Text>
           </View>
           <TouchableOpacity
             onPress={() => navigation.navigate("AtualizarRenda")}
@@ -113,7 +130,7 @@ export default function Menu() {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.footerItem}
-          onPress={() => navigation.navigate("Perfil")}
+          onPress={pegarDadosDoUsuario}
         >
           <Ionicons name="person-outline" size={32} color="#B0B8BE" />
           <Text style={styles.footerLabel}>Perfil</Text>
